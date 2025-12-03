@@ -38,6 +38,7 @@ lerna-debug.log*
 # Misc
 *.tsbuildinfo
 .cache/
+.local/
 
 # Database
 migrations/
