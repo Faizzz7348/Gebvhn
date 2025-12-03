@@ -27,7 +27,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { Search, Filter, X, ChevronDown, ChevronUp, Edit3, Plus, Trash2, Pencil, Sun, Moon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useTheme } from "@/components/theme-provider";
 import { TableColumn, type Page, type InsertPage } from "@shared/schema";
 import { generateTngValues } from "@/utils/tng-generator";
 import { calculateDistance } from "@/utils/distance";
