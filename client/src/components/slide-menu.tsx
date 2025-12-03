@@ -37,8 +37,6 @@ interface SlideMenuProps {
   onSavedLinks?: () => void;
   onShowHelp?: () => void;
   onBulkColorEdit?: () => void;
-  theme?: string;
-  onSetTheme?: (theme: 'dark' | 'light' | 'ocean') => void;
 }
 
 export function SlideMenu({
@@ -57,8 +55,6 @@ export function SlideMenu({
   onSavedLinks,
   onShowHelp,
   onBulkColorEdit,
-  theme,
-  onSetTheme,
 }: SlideMenuProps) {
   const [, navigate] = useLocation();
 
@@ -246,51 +242,6 @@ export function SlideMenu({
 
             {/* Settings */}
             <div className="h-px bg-gray-200 dark:bg-gray-700 mx-3" />
-
-            {/* Theme Switcher */}
-            <div className="px-4 py-2">
-              <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">Theme</div>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => handleItemClick(() => onSetTheme?.('dark'))}
-                  className={`flex-1 flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg transition-all duration-200 ease-out hover:scale-105 active:scale-95 ${
-                    theme === 'dark' 
-                      ? 'bg-gray-900 dark:bg-gray-800 ring-2 ring-blue-500' 
-                      : 'bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  <Moon className="w-4 h-4 text-gray-700 dark:text-gray-200" />
-                  <span className="text-[11px] font-medium text-gray-700 dark:text-gray-200">Dark</span>
-                </button>
-                
-                <button
-                  onClick={() => handleItemClick(() => onSetTheme?.('light'))}
-                  className={`flex-1 flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg transition-all duration-200 ease-out hover:scale-105 active:scale-95 ${
-                    theme === 'light' 
-                      ? 'bg-white ring-2 ring-blue-500' 
-                      : 'bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-800'
-                  }`}
-                >
-                  <Sun className="w-4 h-4 text-gray-700 dark:text-gray-200" />
-                  <span className="text-[11px] font-medium text-gray-700 dark:text-gray-200">Light</span>
-                </button>
-                
-                {/* Ocean theme - only show in edit mode */}
-                {editMode && (
-                  <button
-                    onClick={() => handleItemClick(() => onSetTheme?.('ocean'))}
-                    className={`flex-1 flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-lg transition-all duration-200 ease-out hover:scale-105 active:scale-95 ${
-                      theme === 'ocean' 
-                        ? 'bg-blue-900/30 ring-2 ring-blue-500' 
-                        : 'bg-gray-100 dark:bg-gray-800/50 hover:bg-gray-200 dark:hover:bg-gray-800'
-                    }`}
-                  >
-                    <Waves className="w-4 h-4 text-gray-700 dark:text-gray-200" />
-                    <span className="text-[11px] font-medium text-gray-700 dark:text-gray-200">Ocean</span>
-                  </button>
-                )}
-              </div>
-            </div>
 
             <div className="h-px bg-gray-200 dark:bg-gray-700 mx-3 mt-2" />
 

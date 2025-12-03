@@ -9,14 +9,12 @@ import { Footer } from "@/components/footer";
 import { PasswordPrompt } from "@/components/password-prompt";
 import { ImageLightbox } from "@/components/image-lightbox";
 import { Database } from "lucide-react";
-import { useTheme } from "@/components/theme-provider";
 import { calculateDistance } from "@/utils/distance";
 import type { SharedTableState, TableColumn, TableRow } from "@shared/schema";
 
 export default function SharedTablePage() {
   const [, params] = useRoute("/share/:shareId");
   const shareId = params?.shareId;
-  const { theme, setTheme } = useTheme();
 
   const { 
     rows, 

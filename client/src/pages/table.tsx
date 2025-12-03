@@ -88,7 +88,6 @@ export default function TablePage() {
   const tableRef = useRef<HTMLDivElement>(null);
   const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
-  const { theme, setTheme } = useTheme();
   
   const {
     rows,
@@ -1152,8 +1151,6 @@ export default function TablePage() {
             }
           }}
           isAuthenticated={true}
-          theme={theme}
-          onSetTheme={setTheme}
         />
       </div>
       <main className="fixed inset-0 bg-gray-50 dark:bg-[#0a0a0a] pt-[72px] pb-24 overflow-y-auto">

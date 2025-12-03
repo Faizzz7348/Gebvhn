@@ -19,11 +19,9 @@ interface NavigationProps {
   onBulkColorEdit?: () => void;
   onShowZoom?: () => void;
   isAuthenticated?: boolean;
-  theme?: string;
-  onSetTheme?: (theme: 'dark' | 'light') => void;
 }
 
-export function Navigation({ editMode, onEditModeRequest, onShowCustomization, onAddRow, onSaveData, onGenerateTng, onAddColumn, onOptimizeRoute, onCalculateTolls, onSaveLayout, onSavedLinks, onShowHelp, onBulkColorEdit, onShowZoom, isAuthenticated, theme, onSetTheme }: NavigationProps) {
+export function Navigation({ editMode, onEditModeRequest, onShowCustomization, onAddRow, onSaveData, onGenerateTng, onAddColumn, onOptimizeRoute, onCalculateTolls, onSaveLayout, onSavedLinks, onShowHelp, onBulkColorEdit, onShowZoom, isAuthenticated }: NavigationProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [menuOpen, setMenuOpen] = useState(false);
   const [, navigate] = useLocation();
@@ -117,29 +115,6 @@ export function Navigation({ editMode, onEditModeRequest, onShowCustomization, o
             ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
             : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
         }`}>
-          {/* Theme Switcher */}
-          <div className="px-4 py-2">
-            <div className="flex gap-2 p-1 bg-black/5 dark:bg-white/5 rounded-xl border border-black/10 dark:border-white/10">
-              <button
-                onClick={() => onSetTheme?.('dark')}
-                className={`flex-1 p-2 rounded-lg transition-all duration-200 ease-out flex items-center justify-center gap-2 hover:scale-105 active:scale-95 ${theme === 'dark' ? 'bg-black/20 dark:bg-white/20 text-black dark:text-white' : 'text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/10'}`}
-                title="Dark Mode"
-              >
-                <Moon className="w-4 h-4" />
-                <span className="text-xs">Dark</span>
-              </button>
-              <button
-                onClick={() => onSetTheme?.('light')}
-                className={`flex-1 p-2 rounded-lg transition-all duration-200 ease-out flex items-center justify-center gap-2 hover:scale-105 active:scale-95 ${theme === 'light' ? 'bg-black/20 dark:bg-white/20 text-black dark:text-white' : 'text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/10'}`}
-                title="Light Mode"
-              >
-                <Sun className="w-4 h-4" />
-                <span className="text-xs">Light</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="h-px bg-black/10 dark:bg-white/10 my-1" />
 
           {/* Primary Actions */}
           {editMode ? (

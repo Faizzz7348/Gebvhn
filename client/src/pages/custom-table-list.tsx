@@ -28,7 +28,6 @@ import { Plus, Share2, Trash2, Copy, Check, Home, Edit, ArrowLeft, MoreVertical,
 import type { TableRow, CustomTable } from "@shared/schema";
 import { Footer } from "@/components/footer";
 import { LoadingOverlay } from "@/components/skeleton-loader";
-import { useTheme } from "@/components/theme-provider";
 import { useLocation } from "wouter";
 
 export default function CustomTableList() {
@@ -46,7 +45,6 @@ export default function CustomTableList() {
   const [deliveryFilter, setDeliveryFilter] = useState<string[]>([]);
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const { theme, setTheme } = useTheme();
   const [, setLocation] = useLocation();
 
   // Fetch all table rows
