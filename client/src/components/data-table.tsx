@@ -911,22 +911,65 @@ export function DataTable({
           </Popover>
           
           {/* Combined Filter Section */}
-          <div className="w-auto">
+          <div className="w-auto relative group">
             <Popover>
               <PopoverTrigger asChild>
                 <Button 
                   variant="outline" 
-                  className="h-8 w-8 p-0 pagination-button rounded-lg relative" 
+                  className={`h-8 w-8 p-0 pagination-button rounded-lg relative transition-all duration-300 ${
+                    (filterValue.length > 0 || deliveryFilterValue.length > 0) 
+                      ? 'bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-500/50' 
+                      : ''
+                  }`}
                   data-testid="combined-filter-trigger"
                 >
-                  <Filter className="w-4 h-4" />
+                  <Filter className={`w-4 h-4 transition-all duration-300 ${
+                    (filterValue.length > 0 || deliveryFilterValue.length > 0) 
+                      ? 'text-blue-500 dark:text-blue-400' 
+                      : ''
+                  }`} />
                   {(filterValue.length > 0 || deliveryFilterValue.length > 0) && (
-                    <span className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 bg-red-500 dark:bg-red-400 rounded-full w-2.5 h-2.5 border-2 border-white dark:border-gray-900 z-50"></span>
+                    <>
+                      {/* Animated badge with count */}
+                      <span className="absolute -top-1 -right-1 bg-gradient-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 text-white rounded-full min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold border-2 border-white dark:border-gray-900 z-50 animate-pulse shadow-lg">
+                        {filterValue.length + deliveryFilterValue.length}
+                      </span>
+                      {/* Glow effect */}
+                      <span className="absolute -top-1 -right-1 bg-blue-500 dark:bg-blue-400 rounded-full w-[18px] h-[18px] animate-ping opacity-75 z-40"></span>
+                    </>
                   )}
                 </Button>
               </PopoverTrigger>
             <PopoverContent className="w-64 p-0" align="start">
               <div className="p-3 btn-glass rounded-lg">
+                {/* Summary Header */}
+                {(filterValue.length > 0 || deliveryFilterValue.length > 0) && (
+                  <div className="mb-3 p-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-lg border border-blue-500/20">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                        <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                          {filterValue.length + deliveryFilterValue.length} Filter{(filterValue.length + deliveryFilterValue.length) > 1 ? 's' : ''} Active
+                        </span>
+                      </div>
+                      {onClearAllFilters && (
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          onClick={onClearAllFilters} 
+                          className="h-auto p-1 text-xs hover:bg-red-500/10 hover:text-red-500"
+                        >
+                          <X className="w-3 h-3 mr-1" />
+                          Clear All
+                        </Button>
+                      )}
+                    </div>
+                    <div className="mt-1 text-[10px] text-muted-foreground">
+                      Showing {filteredRowsCount} of {totalRowsCount} results
+                    </div>
+                  </div>
+                )}
+                
                 {/* Routes Section - Hidden in shared view */}
                 {!isSharedView && (
                   <>
