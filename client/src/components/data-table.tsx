@@ -778,11 +778,11 @@ export function DataTable({
 
   return (
     <div
-      className="border-2 border-slate-300 dark:border-blue-500/30 shadow-2xl table-container my-10 rounded-xl overflow-hidden bg-gradient-to-br from-slate-100 via-slate-50 to-slate-100 dark:from-blue-950/40 dark:to-gray-900/40 backdrop-blur-sm"
+      className="border-2 border-slate-300 dark:border-blue-500/30 shadow-2xl table-container my-10 rounded-xl overflow-hidden bg-transparent"
       data-testid="data-table"
     >
       {/* Single Row: Filter/Sort/Search + Action Buttons */}
-      <div className="flex justify-between items-center px-6 py-3 border-b border-blue-200 dark:border-blue-500/30 ocean:border-cyan-500/40 bg-gradient-to-r from-blue-50/80 via-gray-100/40 to-white/80 dark:from-blue-950/40 dark:to-gray-900/40 ocean:from-cyan-950/50 ocean:to-blue-950/50 backdrop-blur-sm shadow-lg transition-all duration-500">
+      <div className="flex justify-between items-center px-6 py-3 border-b border-blue-200 dark:border-blue-500/30 ocean:border-cyan-500/40 bg-transparent shadow-lg transition-all duration-500 rounded-t-xl">
         <div className="flex items-center gap-2 flex-shrink-0">
           {/* Custom Toolbar Content */}
           {customToolbarContent && (
@@ -796,7 +796,7 @@ export function DataTable({
             <PopoverTrigger asChild>
               <Button 
                 variant="outline" 
-                className="h-8 w-8 p-0 pagination-button rounded-lg"
+                className="h-8 w-8 p-0 pagination-button rounded-xl"
                 data-testid="sort-trigger"
               >
                 {sortState ? (
@@ -807,7 +807,7 @@ export function DataTable({
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-52 p-0" align="start">
-              <div className="p-3 btn-glass rounded-lg">
+              <div className="p-3 bg-background border border-border rounded-lg">
                 <h4 className="font-medium text-sm mb-3 pb-2 border-b border-border/20 flex items-center gap-2">
                   <ArrowUpDown className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
                   Sort By
@@ -916,7 +916,7 @@ export function DataTable({
               <PopoverTrigger asChild>
                 <Button 
                   variant="outline" 
-                  className={`h-8 w-8 p-0 pagination-button rounded-lg relative transition-all duration-300 ${
+                  className={`h-8 w-8 p-0 pagination-button rounded-xl relative transition-all duration-300 ${
                     (filterValue.length > 0 || deliveryFilterValue.length > 0) 
                       ? 'bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/20 hover:border-blue-500/50' 
                       : ''
@@ -941,7 +941,7 @@ export function DataTable({
                 </Button>
               </PopoverTrigger>
             <PopoverContent className="w-64 p-0" align="start">
-              <div className="p-3 btn-glass rounded-lg">
+              <div className="p-3 bg-background border border-border rounded-lg">
                 {/* Summary Header */}
                 {(filterValue.length > 0 || deliveryFilterValue.length > 0) && (
                   <div className="mb-3 p-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-lg border border-blue-500/20">
@@ -1074,7 +1074,7 @@ export function DataTable({
                 onClick={onShowCustomization}
                 variant="outline"
                 size="sm"
-                className="h-8 w-8 p-0 pagination-button rounded-lg"
+                className="h-8 w-8 p-0 pagination-button rounded-xl"
                 title="Customize Columns"
                 data-testid="button-customize-columns"
               >
@@ -1088,7 +1088,7 @@ export function DataTable({
                 onClick={onOptimizeRoute}
                 variant="outline"
                 size="sm"
-                className="h-8 w-8 p-0 pagination-button rounded-lg"
+                className="h-8 w-8 p-0 pagination-button rounded-xl"
                 title="Route Optimization"
                 data-testid="button-optimize-route"
               >
@@ -1100,7 +1100,7 @@ export function DataTable({
                 onClick={onShareTable}
                 variant="outline"
                 size="sm"
-                className="h-8 w-8 p-0 pagination-button rounded-lg"
+                className="h-8 w-8 p-0 pagination-button rounded-xl"
                 title="Share Table"
                 data-testid="button-share-table"
               >
@@ -1845,13 +1845,13 @@ export function DataTable({
 
           {/* Pagination Controls */}
           {!disablePagination && (
-            <div className="flex flex-col items-center justify-center gap-1.5 px-4 py-3 border-t border-blue-200 dark:border-blue-500/30 ocean:border-cyan-500/40 bg-gradient-to-r from-blue-50/80 via-gray-100/40 to-white/80 dark:from-blue-950/40 dark:to-gray-900/40 ocean:from-cyan-950/50 ocean:to-blue-950/50 backdrop-blur-sm shadow-lg transition-all duration-500">
+            <div className="flex flex-col items-center justify-center gap-1.5 px-4 py-3 border-t border-blue-200 dark:border-blue-500/30 ocean:border-cyan-500/40 bg-transparent shadow-lg transition-all duration-500 rounded-b-xl">
               
               <div className="flex items-center justify-between gap-1 w-full">
                 {/* Left: Entries per page selector with showing text */}
                 <div className="flex items-center gap-1.5 text-[9px] font-medium text-muted-foreground">
                   <Select value={String(pageSize)} onValueChange={handlePageSizeChange}>
-                    <SelectTrigger className="h-5 w-5 p-0 text-[8px] pagination-button rounded-lg [&>svg]:hidden flex items-center justify-center">
+                    <SelectTrigger className="h-5 w-5 p-0 text-[8px] pagination-button rounded-xl [&>svg]:hidden flex items-center justify-center">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>

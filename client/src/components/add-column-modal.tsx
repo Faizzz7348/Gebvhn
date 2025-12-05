@@ -119,7 +119,7 @@ export function AddColumnModal({ onCreateColumn, disabled }: AddColumnModalProps
         <Button
           variant="outline"
           size="sm"
-          className="btn-glass w-8 h-8 p-0 pagination-button md:w-20 md:h-9 md:px-3"
+          className="w-8 h-8 p-0 pagination-button md:w-20 md:h-9 md:px-3"
           disabled={disabled}
           data-testid="button-add-column"
           title="Add new field"
